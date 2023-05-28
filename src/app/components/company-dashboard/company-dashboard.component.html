@@ -1,0 +1,11 @@
+<app-header></app-header>
+<div class="company">
+  <div
+    *ngFor="let company of companys"
+    class="company__block"
+    routerLink="/company-dashboard/{{ company.id }}"
+  >
+    <span>{{ company.name_company }}</span>
+    <span>{{ company.created | date }}</span>
+  </div>
+</div>

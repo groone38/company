@@ -1,0 +1,27 @@
+<div class="user">
+  <div class="user__name" *ngIf="user">
+    <span
+      ><strong>Name: </strong>{{ user.first_name }} {{ user.last_name }}</span
+    >
+    <p><strong>№:</strong> {{ index + 1 }}</p>
+  </div>
+  <div>
+    <span><strong>Email: </strong>{{ user?.email }}</span>
+  </div>
+  <div>
+    <span><strong>Company: </strong>{{ user?.company }}</span>
+  </div>
+  <div class="user__footer">
+    <span><strong>Tel: </strong>{{ user?.tel }}</span>
+    <div class="user__btn">
+      <img src="/assets/img/edit.png" alt="edit" width="20" height="20" />
+      <img
+        src="/assets/img/delete.png"
+        alt="delete"
+        width="20"
+        height="20"
+        fill
+      />
+    </div>
+  </div>
+</div>

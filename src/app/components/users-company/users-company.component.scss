@@ -1,0 +1,29 @@
+.users {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  margin: 10px 20px;
+  gap: 20px;
+}
+
+.not-found {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
+
+  &__btn {
+    padding: 10px;
+    border: 1px solid rgb(180, 86, 252);
+    color: rgb(180, 86, 252);
+    border-radius: 20px;
+    transition: all 0.5s;
+    &:hover {
+      background-color: rgb(180, 86, 252);
+      color: white;
+    }
+  }
+}

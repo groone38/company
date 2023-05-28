@@ -1,0 +1,14 @@
+<app-header></app-header>
+<div class="users" *ngIf="users.length; else elseBlock">
+  <div *ngFor="let user of users; let i = index" class="users__block">
+    <app-user [user]="user" [index]="i"></app-user>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div class="not-found">
+    <h1>Employee not found</h1>
+    <a routerLink="/company-dashboard" class="not-found__btn"
+      >Go to start page</a
+    >
+  </div>
+</ng-template>

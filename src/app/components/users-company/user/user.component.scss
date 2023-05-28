@@ -1,0 +1,34 @@
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid rgb(180, 86, 252);
+  border-radius: 20px;
+
+  &__name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__btn {
+    img {
+      cursor: pointer;
+      transition: all 0.5s;
+      &:first-child {
+        margin-right: 10px;
+      }
+      &:hover {
+        padding: 5px;
+        border: 1px solid rgb(180, 86, 252);
+      }
+    }
+  }
+}

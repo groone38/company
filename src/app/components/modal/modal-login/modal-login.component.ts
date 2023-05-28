@@ -32,7 +32,7 @@ export class ModalLoginComponent implements OnInit {
       (res: IResponceLogin) => {
         this.errorMessage = '';
         localStorage.setItem('token', res.token);
-        this.router.navigate(['passenger']);
+        this.router.navigate(['company-dashboard']);
       },
       (error) => {
         this.loginForms.reset();
