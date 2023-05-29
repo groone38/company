@@ -1,11 +1,17 @@
 <app-header></app-header>
+<app-search (searchTextChange)="onSearchTextEntered($event)"></app-search>
 <div class="company">
-  <div
-    *ngFor="let company of companys"
-    class="company__block"
-    routerLink="/company-dashboard/{{ company.id }}"
-  >
-    <span>{{ company.name_company }}</span>
-    <span>{{ company.created | date }}</span>
-  </div>
+  <ng-container *ngFor="let company of companys">
+    <div
+      class="company__block"
+      routerLink="/company-dashboard/{{ company.id }}"
+      *ngIf="
+        searchText === '' ||
+        company.name_company.toLowerCase().includes(searchText)
+      "
+    >
+      <span>{{ company.name_company }}</span>
+      <span>{{ company.created | date }}</span>
+    </div>
+  </ng-container>
 </div>

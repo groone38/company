@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CompanyDashboardComponent } from './components/company-dashboard/company-dashboard.component';
 import { UsersCompanyComponent } from './components/users-company/users-company.component';
 import { UserComponent } from './components/users-company/user/user.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UserComponent } from './components/users-company/user/user.component';
     CompanyDashboardComponent,
     UsersCompanyComponent,
     UserComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,11 +17,18 @@ export class UsersCompanyComponent implements OnInit {
   ) {}
   users: User[] = [];
   id: number = 0;
+  searchText: string = '';
   public getUsers(id: string) {
     this.usersService
       .get(id)
       .subscribe((users: User[]) => (this.users = users));
   }
+
+  onSearchTextEntered(searchValue: string) {
+    this.searchText = searchValue;
+    console.log(this.searchText);
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.id = params.id;
