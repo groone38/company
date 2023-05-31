@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ModalLoginComponent } from './components/modal/modal-login/modal-login.component';
 import { ModelRegistrComponent } from './components/modal/modal-registr/model-registr/model-registr.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -11,6 +11,8 @@ import { CompanyDashboardComponent } from './components/company-dashboard/compan
 import { UsersCompanyComponent } from './components/users-company/users-company.component';
 import { UserComponent } from './components/users-company/user/user.component';
 import { SearchComponent } from './components/search/search.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AuthInterceptor } from './core/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { SearchComponent } from './components/search/search.component';
     UsersCompanyComponent,
     UserComponent,
     SearchComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,13 @@ import { SearchComponent } from './components/search/search.component';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

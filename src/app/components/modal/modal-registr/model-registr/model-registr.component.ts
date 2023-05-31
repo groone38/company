@@ -25,6 +25,7 @@ export class ModelRegistrComponent implements OnInit {
       last_name: [''],
       company: [''],
       tel: [''],
+      boss: [''],
     });
   }
 

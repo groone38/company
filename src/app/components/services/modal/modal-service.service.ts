@@ -15,6 +15,7 @@ export interface IResponceLogin {
 })
 export class ModalServiceService {
   constructor(private readonly http: HttpClient) {}
+  isLogged: boolean = false;
 
   public get(): Observable<User[]> {
     return this.http.get<User[]>(`${BASE_URL}/singupUsers`);
