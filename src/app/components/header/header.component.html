@@ -1,8 +1,14 @@
+<app-modal-dialog *ngIf="generalService.showDialog"></app-modal-dialog>
 <header class="header">
   <nav class="header__nav">
     <a routerLink="/company-dashboard"><h2>Company</h2></a>
     <div class="header__btn">
-      <button class="header__btn-log">Create User</button>
+      <button
+        class="header__btn-log"
+        (click)="generalService.showDialog = true"
+      >
+        Create User
+      </button>
       <button class="header__btn-log">Create Company</button>
       <button class="header__btn-log" (click)="onHandleLogout()">Logout</button>
     </div>

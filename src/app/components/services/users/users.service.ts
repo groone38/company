@@ -16,6 +16,7 @@ export class UsersService {
   }
 
   public post(user: User): Observable<void> {
+    console.log(user);
     return this.http.post<void>(`http://localhost:5000/users`, user);
   }
 }

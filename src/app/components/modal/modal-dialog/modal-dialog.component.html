@@ -1,0 +1,51 @@
+<div id="overlay" (click)="generalService.showDialog = false"></div>
+<div id="container">
+  <form [formGroup]="createForms" (ngSubmit)="create()" class="form">
+    <div class="form__input">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" formControlName="email" />
+    </div>
+    <div class="form__input">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        formControlName="password"
+      />
+    </div>
+    <div class="form__input">
+      <label for="first_name">First Name</label>
+      <input
+        type="text"
+        name="first_name"
+        id="first_name"
+        formControlName="first_name"
+      />
+    </div>
+    <div class="form__input">
+      <label for="last_name">Last Name</label>
+      <input
+        type="text"
+        name="last_name"
+        id="last_name"
+        formControlName="last_name"
+      />
+    </div>
+    <div class="form__input">
+      <label for="company">Company</label>
+      <input
+        type="text"
+        name="company"
+        id="company"
+        formControlName="company"
+      />
+    </div>
+    <div class="form__input">
+      <label for="tel">Tel</label>
+      <input type="tel" name="tel" id="tel" formControlName="tel" />
+    </div>
+    <button type="submit">Add new User</button>
+    <button (click)="generalService.showDialog = false">Close</button>
+  </form>
+</div>
