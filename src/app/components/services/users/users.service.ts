@@ -14,4 +14,8 @@ export class UsersService {
   public get(id: string): Observable<User[]> {
     return this.http.get<User[]>(`${BASE_URL}/${id}/users`);
   }
+
+  public post(user: User): Observable<void> {
+    return this.http.post<void>(`http://localhost:5000/users`, user);
+  }
 }

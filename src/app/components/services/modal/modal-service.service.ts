@@ -16,12 +16,14 @@ export interface IResponceLogin {
 export class ModalServiceService {
   constructor(private readonly http: HttpClient) {}
   isLogged: boolean = false;
+  token: string = '';
 
   public get(): Observable<User[]> {
     return this.http.get<User[]>(`${BASE_URL}/singupUsers`);
   }
 
   public postLogin(user: User): Observable<IResponceLogin> {
+    console.log(user);
     return this.http.post<IResponceLogin>(`${BASE_URL}/login`, user);
   }
 

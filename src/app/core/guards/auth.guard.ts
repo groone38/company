@@ -26,20 +26,20 @@ export class authGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.getIsAuth();
-    // if (localStorage.getItem('token')) {
-    //   return true;
-    // } else {
-    //   this.router.navigate(['login']);
-    //   return false;
-    // }
-  }
-  private getIsAuth(): Observable<boolean> {
-    if (this.modalServiceService.isLogged) {
-      return of(true);
+    // return this.getIsAuth();
+    if (localStorage.getItem('token')) {
+      return true;
     } else {
       this.router.navigate(['login']);
-      return of(false);
+      return false;
     }
   }
+  // private getIsAuth(): Observable<boolean> {
+  //   if (this.modalServiceService.isLogged) {
+  //     return of(true);
+  //   } else {
+  //     this.router.navigate(['login']);
+  //     return of(false);
+  //   }
+  // }
 }

@@ -14,6 +14,15 @@
   }
 
   &__btn {
+    button {
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__btn-log {
     outline: none;
     border: none;
     border-radius: 20px;

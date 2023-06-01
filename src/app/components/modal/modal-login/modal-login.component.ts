@@ -31,13 +31,14 @@ export class ModalLoginComponent implements OnInit {
     this.modalServiceService.postLogin(this.loginForms.value).subscribe(
       (res: IResponceLogin) => {
         this.errorMessage = '';
+        this.modalServiceService.token = res.token;
         this.modalServiceService.isLogged = true;
         localStorage.setItem('token', res.token);
         this.router.navigate(['company-dashboard']);
       },
       (error) => {
         this.loginForms.reset();
-        this.errorMessage = error.error.message;
+        // this.errorMessage = error.error.message;
         this.modalServiceService.isLogged = true;
       }
     );
