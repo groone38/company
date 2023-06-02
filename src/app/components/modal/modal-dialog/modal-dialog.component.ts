@@ -29,6 +29,7 @@ export class ModalDialogComponent {
   public create() {
     this.usersService.post(this.createForms.value).subscribe(() => {
       this.createForms.reset();
+      this.generalService.showDialog = false;
     });
   }
 }

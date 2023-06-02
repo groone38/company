@@ -34,7 +34,7 @@ export class AuthInterceptor implements HttpInterceptor {
       if (decoded.role) {
         this.generalService.admin = true;
       }
-      console.log(decoded);
+
       request = request.clone({
         setHeaders: { Authorization: token },
       });

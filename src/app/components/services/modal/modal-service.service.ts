@@ -24,7 +24,6 @@ export class ModalServiceService {
   }
 
   public postLogin(user: User): Observable<IResponceLogin> {
-    console.log(user);
     return this.http.post<IResponceLogin>(`${BASE_URL}/login`, user);
   }
 

@@ -1,6 +1,5 @@
 <div id="overlay" (click)="generalService.showDialog = false"></div>
 <div id="container">
-  <h1>Create user</h1>
   <form [formGroup]="createForms" (ngSubmit)="create()" class="form">
     <div class="form__input">
       <label for="email">Email</label>
@@ -49,8 +48,8 @@
     <div class="form__btn">
       <button type="submit" class="form__btn-create">Add new User</button>
       <button
-        (click)="generalService.showDialog = false"
         class="form__btn-close"
+        (click)="generalService.showDialog = false"
       >
         Close
       </button>
