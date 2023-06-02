@@ -8,6 +8,7 @@ const BASE_URL: string = 'http://localhost:5000/auth';
 export interface IResponceLogin {
   message: string;
   token: string;
+  admin: boolean;
 }
 
 @Injectable({

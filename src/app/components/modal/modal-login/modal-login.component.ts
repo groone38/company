@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { Router } from '@angular/router';
+
+import { GeneralService } from './../../services/general.service';
 import {
   IResponceLogin,
   ModalServiceService,
@@ -17,7 +19,8 @@ export class ModalLoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private readonly modalServiceService: ModalServiceService,
-    private router: Router
+    private router: Router,
+    private readonly generalService: GeneralService
   ) {}
   errorMessage: string = '';
   ngOnInit(): void {
@@ -31,6 +34,10 @@ export class ModalLoginComponent implements OnInit {
     this.modalServiceService.postLogin(this.loginForms.value).subscribe(
       (res: IResponceLogin) => {
         this.errorMessage = '';
+        console.log(res);
+        if (res.admin) {
+          this.generalService.admin = true;
+        }
         this.modalServiceService.token = res.token;
         this.modalServiceService.isLogged = true;
         localStorage.setItem('token', res.token);

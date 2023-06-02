@@ -5,5 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class GeneralService {
   showDialog: boolean = false;
+  admin: boolean = false;
   constructor() {}
 }
