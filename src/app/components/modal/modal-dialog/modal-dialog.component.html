@@ -1,6 +1,16 @@
 <div id="overlay" (click)="generalService.showDialog = false"></div>
 <div id="container">
-  <form [formGroup]="createForms" (ngSubmit)="create()" class="form">
+  <div class="header">
+    <button (click)="toggle = true">Create User</button>
+    <button (click)="toggle = false">Create Company</button>
+  </div>
+  <form
+    [formGroup]="userForms"
+    (ngSubmit)="createUser()"
+    class="form"
+    *ngIf="toggle; else elseBlock"
+  >
+    <h1>Create User</h1>
     <div class="form__input">
       <label for="email">Email</label>
       <input type="email" name="email" id="email" formControlName="email" />
@@ -55,4 +65,27 @@
       </button>
     </div>
   </form>
+  <ng-template #elseBlock>
+    <form [formGroup]="companyForms" (ngSubmit)="createCompany()" class="form">
+      <h1>Create Company</h1>
+      <div class="form__input">
+        <label for="name_company">Name Company</label>
+        <input
+          type="text"
+          name="name_company"
+          id="name_company"
+          formControlName="name_company"
+        />
+      </div>
+      <div class="form__btn">
+        <button type="submit" class="form__btn-create">Add new Company</button>
+        <button
+          class="form__btn-close"
+          (click)="generalService.showDialog = false"
+        >
+          Close
+        </button>
+      </div>
+    </form>
+  </ng-template>
 </div>

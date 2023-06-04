@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { GeneralService } from './../../services/general.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UsersService } from './../../services/users/users.service';
+import { CompanyServiceService } from './../../services/company/company-service.service';
 
 @Component({
   selector: 'app-modal-dialog',
@@ -12,11 +13,14 @@ export class ModalDialogComponent {
   constructor(
     public readonly generalService: GeneralService,
     private readonly usersService: UsersService,
+    private readonly companyServiceService: CompanyServiceService,
     private formBuilder: FormBuilder
   ) {}
-  public createForms!: FormGroup;
+  public userForms!: FormGroup;
+  public companyForms!: FormGroup;
+  public toggle: boolean = true;
   ngOnInit(): void {
-    this.createForms = this.formBuilder.group({
+    this.userForms = this.formBuilder.group({
       email: [''],
       password: [''],
       first_name: [''],
@@ -24,11 +28,21 @@ export class ModalDialogComponent {
       company: [''],
       tel: [''],
     });
+    this.companyForms = this.formBuilder.group({
+      name_company: [''],
+    });
   }
 
-  public create() {
-    this.usersService.post(this.createForms.value).subscribe(() => {
-      this.createForms.reset();
+  public createUser() {
+    this.usersService.post(this.userForms.value).subscribe(() => {
+      this.userForms.reset();
+      this.generalService.showDialog = false;
+    });
+  }
+
+  public createCompany() {
+    this.companyServiceService.create(this.companyForms.value).subscribe(() => {
+      this.companyForms.reset();
       this.generalService.showDialog = false;
     });
   }
