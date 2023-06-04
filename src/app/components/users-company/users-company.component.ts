@@ -12,12 +12,11 @@ import { Observable, map } from 'rxjs';
 export class UsersCompanyComponent implements OnInit {
   constructor(
     private readonly usersService: UsersService,
-    private router: Router,
     private route: ActivatedRoute
   ) {}
   users: User[] = [];
-  id: number = 0;
   searchText: string = '';
+
   public getUsers(id: string) {
     this.usersService
       .get(id)
@@ -26,13 +25,11 @@ export class UsersCompanyComponent implements OnInit {
 
   onSearchTextEntered(searchValue: string) {
     this.searchText = searchValue;
-    console.log(this.searchText);
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id = params.id;
+      this.getUsers(params.id);
     });
-    this.getUsers(this.id.toString());
   }
 }

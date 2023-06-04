@@ -41,9 +41,8 @@ export class ModalDialogComponent {
   }
 
   public createCompany() {
-    this.companyServiceService.create(this.companyForms.value).subscribe(() => {
-      this.companyForms.reset();
-      this.generalService.showDialog = false;
-    });
+    this.companyServiceService.create(this.companyForms.value);
+    this.companyForms.reset();
+    this.generalService.showDialog = false;
   }
 }

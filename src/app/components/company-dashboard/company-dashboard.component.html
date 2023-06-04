@@ -1,7 +1,7 @@
 <app-header></app-header>
 <app-search (searchTextChange)="onSearchTextEntered($event)"></app-search>
 <div class="company">
-  <ng-container *ngFor="let company of companys">
+  <ng-container *ngFor="let company of company$ | async">
     <div
       class="company__block"
       routerLink="/company-dashboard/{{ company.id }}"
