@@ -1,15 +1,19 @@
 <app-header></app-header>
 <app-search (searchTextChange)="onSearchTextEntered($event)"></app-search>
-<div class="users" *ngIf="users.length; else elseBlock">
-  <ng-container *ngFor="let user of users; let i = index">
-    <div
-      class="users__block"
-      *ngIf="searchText === '' || user.email.toLowerCase().includes(searchText)"
-    >
-      <app-user [user]="user" [index]="i"></app-user>
-    </div>
-  </ng-container>
-</div>
+<ng-container *ngIf="users$ | async as users">
+  <div class="users" *ngIf="users.length > 0; else elseBlock">
+    <ng-container *ngFor="let user of users; let i = index">
+      <div
+        class="users__block"
+        *ngIf="
+          searchText === '' || user.email.toLowerCase().includes(searchText)
+        "
+      >
+        <app-user [user]="user" [index]="i"></app-user>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
 <ng-template #elseBlock>
   <div class="not-found">
     <h1>Employee not found</h1>

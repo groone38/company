@@ -14,14 +14,9 @@ export class UsersCompanyComponent implements OnInit {
     private readonly usersService: UsersService,
     private route: ActivatedRoute
   ) {}
-  users: User[] = [];
-  searchText: string = '';
 
-  public getUsers(id: string) {
-    this.usersService
-      .get(id)
-      .subscribe((users: User[]) => (this.users = users));
-  }
+  searchText: string = '';
+  public users$: Observable<User[]>;
 
   onSearchTextEntered(searchValue: string) {
     this.searchText = searchValue;
@@ -29,7 +24,8 @@ export class UsersCompanyComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.getUsers(params.id);
+      this.usersService.get(params.id);
+      this.users$ = this.usersService.entities$;
     });
   }
 }

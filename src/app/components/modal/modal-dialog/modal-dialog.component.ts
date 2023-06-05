@@ -3,6 +3,7 @@ import { GeneralService } from './../../services/general.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UsersService } from './../../services/users/users.service';
 import { CompanyServiceService } from './../../services/company/company-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-modal-dialog',
@@ -14,7 +15,8 @@ export class ModalDialogComponent {
     public readonly generalService: GeneralService,
     private readonly usersService: UsersService,
     private readonly companyServiceService: CompanyServiceService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
   ) {}
   public userForms!: FormGroup;
   public companyForms!: FormGroup;
@@ -34,10 +36,11 @@ export class ModalDialogComponent {
   }
 
   public createUser() {
-    this.usersService.post(this.userForms.value).subscribe(() => {
-      this.userForms.reset();
-      this.generalService.showDialog = false;
+    this.route.params.subscribe((params) => {
+      this.usersService.post(this.userForms.value, params.id);
     });
+    this.userForms.reset();
+    this.generalService.showDialog = false;
   }
 
   public createCompany() {

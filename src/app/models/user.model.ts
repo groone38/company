@@ -8,3 +8,8 @@ export interface User {
   created?: string;
   company_id?: number;
 }
+
+export interface IUserRequest {
+  data: User[];
+  message: string;
+}
