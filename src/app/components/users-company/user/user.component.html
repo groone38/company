@@ -13,7 +13,7 @@
   </div>
   <div class="user__footer">
     <span><strong>Tel: </strong>{{ user?.tel }}</span>
-    <div class="user__btn">
+    <div class="user__btn" *ngIf="generalService.admin">
       <img src="/assets/img/edit.png" alt="edit" width="20" height="20" />
       <img
         src="/assets/img/delete.png"
@@ -21,6 +21,7 @@
         width="20"
         height="20"
         fill
+        (click)="delete(user?.id!)"
       />
     </div>
   </div>

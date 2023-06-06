@@ -31,4 +31,10 @@ export class UsersService {
         this.entities$.next(this.users);
       });
   }
+
+  public delete(id: number, companyId: string) {
+    return this.http
+      .delete(`${BASE_URL}/${id}`)
+      .subscribe(() => this.get(companyId));
+  }
 }
