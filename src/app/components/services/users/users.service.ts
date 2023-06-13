@@ -32,6 +32,12 @@ export class UsersService {
       });
   }
 
+  public put(user: User, id: number, companyId: string) {
+    return this.http.put<User[]>(`${BASE_URL}/${id}`, user).subscribe(() => {
+      this.get(companyId);
+    });
+  }
+
   public delete(id: number, companyId: string) {
     return this.http
       .delete(`${BASE_URL}/${id}`)

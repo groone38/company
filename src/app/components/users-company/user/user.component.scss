@@ -22,8 +22,9 @@
     img {
       cursor: pointer;
       transition: all 0.5s;
-      &:first-child {
-        margin-right: 10px;
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
       }
       &:hover {
         padding: 5px;

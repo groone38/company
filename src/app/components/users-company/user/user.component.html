@@ -1,20 +1,79 @@
-<div class="user">
+<form class="user" [formGroup]="userform">
   <div class="user__name" *ngIf="user">
-    <span
-      ><strong>Name: </strong>{{ user.first_name }} {{ user.last_name }}</span
+    <span *ngIf="!editMode"
+      ><strong>Full name: </strong>{{ user.first_name }}
+      {{ user.last_name }}</span
     >
+    <div *ngIf="editMode">
+      <label for="first_name">First Name</label>
+      <input
+        type="text"
+        name="first_name"
+        id="first_name"
+        formControlName="first_name"
+      />
+    </div>
     <p><strong>№:</strong> {{ index + 1 }}</p>
   </div>
-  <div>
-    <span><strong>Email: </strong>{{ user?.email }}</span>
+  <div *ngIf="editMode">
+    <label for="last_name">Last Name</label>
+    <input
+      type="text"
+      name="last_name"
+      id="last_name"
+      formControlName="last_name"
+    />
   </div>
   <div>
-    <span><strong>Company: </strong>{{ user?.company }}</span>
+    <span *ngIf="!editMode"><strong>Email: </strong>{{ user?.email }}</span>
+    <div *ngIf="editMode">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" formControlName="email" />
+    </div>
+  </div>
+  <div>
+    <span *ngIf="!editMode"><strong>Company: </strong>{{ user?.company }}</span>
+    <div *ngIf="editMode">
+      <label for="company">Company</label>
+      <input
+        type="text"
+        name="company"
+        id="company"
+        formControlName="company"
+      />
+    </div>
   </div>
   <div class="user__footer">
-    <span><strong>Tel: </strong>{{ user?.tel }}</span>
+    <span *ngIf="!editMode"><strong>Tel: </strong>{{ user?.tel }}</span>
+    <div *ngIf="editMode">
+      <label for="tel">Tel</label>
+      <input type="tel" name="tel" id="tel" formControlName="tel" />
+    </div>
     <div class="user__btn" *ngIf="generalService.admin">
-      <img src="/assets/img/edit.png" alt="edit" width="20" height="20" />
+      <img
+        src="/assets/img/send.png"
+        alt="send"
+        width="20"
+        height="20"
+        (click)="sendEdit(user?.id!)"
+        *ngIf="editMode"
+      />
+      <img
+        src="/assets/img/cancel.png"
+        alt="cancel"
+        width="20"
+        height="20"
+        (click)="this.editMode = false"
+        *ngIf="editMode"
+      />
+      <img
+        src="/assets/img/edit.png"
+        alt="edit"
+        width="20"
+        height="20"
+        (click)="this.editMode = true"
+        *ngIf="!editMode"
+      />
       <img
         src="/assets/img/delete.png"
         alt="delete"
@@ -25,4 +84,4 @@
       />
     </div>
   </div>
-</div>
+</form>
