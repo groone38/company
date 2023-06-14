@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 import { Router } from '@angular/router';
 
-import { GeneralService } from './../../services/general.service';
 import {
   IResponceLogin,
   ModalServiceService,
@@ -19,14 +23,13 @@ export class ModalLoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private readonly modalServiceService: ModalServiceService,
-    private router: Router,
-    private readonly generalService: GeneralService
+    private router: Router
   ) {}
   errorMessage: string = '';
   ngOnInit(): void {
     this.loginForms = this.formBuilder.group({
-      email: [''],
-      password: [''],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
     });
   }
 
@@ -35,15 +38,21 @@ export class ModalLoginComponent implements OnInit {
       (res: IResponceLogin) => {
         this.errorMessage = '';
         this.modalServiceService.token = res.token;
-        // this.modalServiceService.isLogged = true;
         localStorage.setItem('token', res.token);
         this.router.navigate(['company-dashboard']);
       },
       (error) => {
         this.loginForms.reset();
         this.errorMessage = error.error.message;
-        // this.modalServiceService.isLogged = true;
       }
     );
+  }
+
+  public get email(): FormControl {
+    return this.loginForms.get('email') as FormControl;
+  }
+
+  public get password(): FormControl {
+    return this.loginForms.get('password') as FormControl;
   }
 }

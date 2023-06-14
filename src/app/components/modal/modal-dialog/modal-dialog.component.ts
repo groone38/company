@@ -15,8 +15,8 @@ export class ModalDialogComponent {
     public readonly generalService: GeneralService,
     private readonly usersService: UsersService,
     private readonly companyServiceService: CompanyServiceService,
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private readonly formBuilder: FormBuilder,
+    private readonly route: ActivatedRoute
   ) {}
   public userForms!: FormGroup;
   public companyForms!: FormGroup;

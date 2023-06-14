@@ -19,10 +19,7 @@ interface JWT {
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(
-    private readonly modalServiceService: ModalServiceService,
-    private readonly generalService: GeneralService
-  ) {}
+  constructor(private readonly generalService: GeneralService) {}
 
   intercept(
     request: HttpRequest<unknown>,

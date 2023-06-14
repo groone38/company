@@ -4,6 +4,17 @@
     <div class="form__input">
       <label for="email">Email</label>
       <input type="email" name="email" id="email" formControlName="email" />
+      <small
+        class="form__error"
+        *ngIf="email.errors?.['required'] && (email.touched || email.dirty)"
+        >Email is required</small
+      >
+      <small
+        class="form__error"
+        *ngIf="email.errors?.['email'] && (email.touched || email.dirty)"
+      >
+        Email is Invalid
+      </small>
     </div>
     <div class="form__input">
       <label for="password">Password</label>
@@ -13,12 +24,24 @@
         id="password"
         formControlName="password"
       />
+      <small
+        class="form__error"
+        *ngIf="password.errors?.['required'] && (password.touched || password.dirty)"
+        >Password is required</small
+      >
     </div>
     <div class="form__btn">
-      <button class="form__btn-login">Login</button>
+      <button class="form__btn-login" [disabled]="loginForms.invalid">
+        Login
+      </button>
       <a routerLink="/register" class="form__btn-link"
         >Don't have an account yet?</a
       >
     </div>
   </form>
 </div>
+
+<!-- *ngIf="
+loginForms.controls['email'].dirty &&
+loginForms.hasError('required', 'email')
+" -->

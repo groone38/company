@@ -26,14 +26,13 @@ export class UsersService {
     return this.http
       .post<User[]>(`${BASE_URL}/${id}`, user)
       .subscribe((users: any) => {
-        console.log(users);
         this.users = users.data;
         this.entities$.next(this.users);
       });
   }
 
   public put(user: User, id: number, companyId: string) {
-    return this.http.put<User[]>(`${BASE_URL}/${id}`, user).subscribe(() => {
+    return this.http.put(`${BASE_URL}/${id}`, user).subscribe(() => {
       this.get(companyId);
     });
   }

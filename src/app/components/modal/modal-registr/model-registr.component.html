@@ -1,8 +1,20 @@
 <div class="app">
   <form [formGroup]="singupForms" (ngSubmit)="singUp()" class="form">
+    <h3 *ngIf="errorMessage" class="form__error">{{ errorMessage }}</h3>
     <div class="form__input">
       <label for="email">Email</label>
       <input type="email" name="email" id="email" formControlName="email" />
+      <small
+        class="form__error"
+        *ngIf="email.errors?.['required'] && (email.touched || email.dirty)"
+        >Email is required</small
+      >
+      <small
+        class="form__error"
+        *ngIf="email.errors?.['email'] && (email.touched || email.dirty)"
+      >
+        Email is Invalid
+      </small>
     </div>
     <div class="form__input">
       <label for="password">Password</label>
@@ -12,6 +24,17 @@
         id="password"
         formControlName="password"
       />
+      <small
+        class="form__error"
+        *ngIf="password.errors?.['required'] && (password.touched || password.dirty)"
+        >Password is required</small
+      >
+      <small
+        class="form__error"
+        *ngIf="password.errors?.['minlength'] && (password.touched || password.dirty)"
+      >
+        Password is Invalid
+      </small>
     </div>
     <div class="form__input">
       <label for="confirmPassword">Confirm Password</label>
@@ -21,6 +44,11 @@
         id="confirmPassword"
         formControlName="confirmPassword"
       />
+      <small
+        class="form__error"
+        *ngIf="confirmPassword.errors?.['required']&& (password.touched || password.dirty)"
+        >Confirm password is required</small
+      >
     </div>
     <div class="form__input">
       <label for="first_name">First Name</label>
@@ -30,6 +58,23 @@
         id="first_name"
         formControlName="first_name"
       />
+      <small
+        class="form__error"
+        *ngIf="firstName.errors?.['required'] && (firstName.touched || firstName.dirty)"
+        >First name is required</small
+      >
+      <small
+        class="form__error"
+        *ngIf="firstName.errors?.['minlength'] && (firstName.touched || firstName.dirty)"
+      >
+        First name min length 2 simbols
+      </small>
+      <small
+        class="form__error"
+        *ngIf="firstName.errors?.['pattern'] && (firstName.touched || firstName.dirty)"
+      >
+        First name is not number
+      </small>
     </div>
     <div class="form__input">
       <label for="last_name">Last Name</label>
@@ -39,26 +84,80 @@
         id="last_name"
         formControlName="last_name"
       />
+      <small
+        class="form__error"
+        *ngIf="lastName.errors?.['required'] && (lastName.touched || lastName.dirty)"
+        >Last name is required</small
+      >
+      <small
+        class="form__error"
+        *ngIf="lastName.errors?.['minlength'] && (lastName.touched || lastName.dirty)"
+      >
+        Last name min length 2 simbols
+      </small>
+      <small
+        class="form__error"
+        *ngIf="lastName.errors?.['pattern'] && (lastName.touched || lastName.dirty)"
+      >
+        Last name is not number
+      </small>
     </div>
     <div class="form__input">
       <label for="company">Company</label>
-      <input
+      <select name="company" id="company" formControlName="company">
+        <option value="select">--Select--</option>
+        <option value="erker">erker</option>
+        <option value="devpro">devpro</option>
+        <option value="prodoctorov">prodoctorov</option>
+        <option value="rostelecom">rostelecom</option>
+      </select>
+      <small
+        class="form__error"
+        *ngIf="company.errors?.['required'] && (company.touched || company.dirty)"
+        >Company is required</small
+      >
+      <!-- <input
         type="text"
         name="company"
         id="company"
         formControlName="company"
-      />
+      /> -->
     </div>
     <div class="form__input">
       <label for="tel">Tel</label>
       <input type="tel" name="tel" id="tel" formControlName="tel" />
-    </div>
-    <div class="form__input">
-      <label for="boss">Boss</label>
-      <input type="checkbox" name="boss" id="boss" formControlName="boss" />
+      <small
+        class="form__error"
+        *ngIf="tel.errors?.['required'] && (tel.touched || tel.dirty)"
+        >Tel is required</small
+      >
+      <small
+        class="form__error"
+        *ngIf="tel.errors?.['minlength'] && (tel.touched || tel.dirty)"
+      >
+        Tel min length 10 simbols
+      </small>
+      <small
+        class="form__error"
+        *ngIf="tel.errors?.['maxlength'] && (tel.touched || tel.dirty)"
+      >
+        Tel max length 10 simbols
+      </small>
+      <small
+        class="form__error"
+        *ngIf="tel.errors?.['pattern'] && (tel.touched || tel.dirty)"
+      >
+        Tel is not letters
+      </small>
     </div>
     <div class="form__btn">
-      <button type="submit" class="form__btn-login">Registr</button>
+      <button
+        type="submit"
+        class="form__btn-login"
+        [disabled]="singupForms.invalid"
+      >
+        Registr
+      </button>
       <a routerLink="/login" class="form__btn-link">You have an account?</a>
     </div>
   </form>

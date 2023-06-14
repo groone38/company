@@ -34,6 +34,7 @@
     &-login {
       outline: none;
       border: none;
+      cursor: pointer;
       border-radius: 20px;
       padding: 5px;
       background-color: rgb(180, 86, 252);
@@ -43,6 +44,14 @@
       &:hover {
         background-color: white;
         color: rgb(180, 86, 252);
+      }
+      &:disabled {
+        opacity: 0.5;
+        cursor: auto;
+        &:hover {
+          background-color: rgb(180, 86, 252);
+          color: white;
+        }
       }
     }
     &-link {
