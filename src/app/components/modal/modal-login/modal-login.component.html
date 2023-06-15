@@ -9,12 +9,6 @@
         *ngIf="email.errors?.['required'] && (email.touched || email.dirty)"
         >Email is required</small
       >
-      <small
-        class="form__error"
-        *ngIf="email.errors?.['email'] && (email.touched || email.dirty)"
-      >
-        Email is Invalid
-      </small>
     </div>
     <div class="form__input">
       <label for="password">Password</label>

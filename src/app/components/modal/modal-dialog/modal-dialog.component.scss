@@ -83,6 +83,14 @@
         background-color: white;
         color: rgb(180, 86, 252);
       }
+      &:disabled {
+        opacity: 0.5;
+        cursor: auto;
+        &:hover {
+          background-color: rgb(180, 86, 252);
+          color: white;
+        }
+      }
     }
     &-close {
       border: 1px solid rgb(180, 86, 252);
@@ -97,5 +105,9 @@
         color: white;
       }
     }
+  }
+
+  &__error {
+    color: red;
   }
 }
