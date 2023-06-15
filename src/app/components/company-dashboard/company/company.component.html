@@ -1,10 +1,42 @@
-<div class="company">
+<form class="company" [formGroup]="companyform">
   <div class="company__block" routerLink="/company-dashboard/{{ company.id }}">
     <span>{{ company.name_company }}</span>
     <span>{{ company.created | date }}</span>
   </div>
-  <div class="company__edit">
-    <img src="/assets/img/send.png" alt="send" width="20" height="20" />
+  <div class="company__edit" *ngIf="generalService.admin">
+    <div *ngIf="editMode">
+      <label for="name__company">Department</label>
+      <input
+        type="text"
+        name="name__company"
+        id="name__company"
+        formControlName="name__company"
+      />
+    </div>
+    <img
+      src="/assets/img/send.png"
+      alt="send"
+      width="20"
+      height="20"
+      (click)="sendEdit()"
+      *ngIf="editMode"
+    />
+    <img
+      src="/assets/img/cancel.png"
+      alt="cancel"
+      width="20"
+      height="20"
+      (click)="this.editMode = false"
+      *ngIf="editMode"
+    />
+    <img
+      src="/assets/img/edit.png"
+      alt="edit"
+      width="20"
+      height="20"
+      (click)="this.editMode = true"
+      *ngIf="!editMode"
+    />
     <img
       src="/assets/img/delete.png"
       alt="delete"
@@ -13,4 +45,4 @@
       (click)="delete(company.id)"
     />
   </div>
-</div>
+</form>

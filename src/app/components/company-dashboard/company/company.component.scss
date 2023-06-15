@@ -31,6 +31,13 @@
     overflow: hidden;
     border-radius: 10px;
     transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: black;
+    label {
+      margin-right: 5px;
+    }
   }
   &:hover {
     margin-bottom: 25px;
@@ -45,7 +52,7 @@
 img {
   cursor: pointer;
   transition: all 0.5s;
-  margin-right: 10px;
+  // margin-right: 10px;
   &:last-child {
     margin-right: 0;
   }

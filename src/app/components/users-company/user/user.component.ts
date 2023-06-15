@@ -35,7 +35,6 @@ export class UserComponent implements OnInit {
   }
 
   public sendEdit(id: number) {
-    console.log(this.userform.value);
     this.editMode = false;
     this.route.params.subscribe((params) => {
       this.usersService.put(this.userform.value, id, params.id);

@@ -30,6 +30,8 @@ export class AuthInterceptor implements HttpInterceptor {
       let decoded: JWT = jwt_decode(token);
       if (decoded.role) {
         this.generalService.admin = true;
+      } else {
+        this.generalService.admin = false;
       }
 
       request = request.clone({
