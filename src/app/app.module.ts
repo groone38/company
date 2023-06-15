@@ -13,6 +13,7 @@ import { SearchComponent } from './components/search/search.component';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { ModalDialogComponent } from './components/modal/modal-dialog/modal-dialog.component';
 import { ModelRegistrComponent } from './components/modal/modal-registr/model-registr.component';
+import { CompanyComponent } from './components/company-dashboard/company/company.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ModelRegistrComponent } from './components/modal/modal-registr/model-re
     UserComponent,
     SearchComponent,
     ModalDialogComponent,
+    CompanyComponent,
   ],
   imports: [
     BrowserModule,

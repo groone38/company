@@ -18,7 +18,8 @@ import { Observable, Subscription } from 'rxjs';
 export class CompanyDashboardComponent implements OnInit {
   constructor(private readonly companyServiceService: CompanyServiceService) {}
 
-  searchText: string = '';
+  public searchText: string = '';
+  public editMode: boolean = false;
   public company$: Observable<ICompony[]>;
 
   onSearchTextEntered(searchValue: string) {

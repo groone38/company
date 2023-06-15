@@ -1,0 +1,56 @@
+.company {
+  position: relative;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
+  border: 1px solid rgb(180, 86, 252);
+  border-radius: 10px;
+
+  transition: all 0.5s;
+  cursor: pointer;
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+  }
+
+  &:hover {
+    color: white;
+    background-color: rgb(180, 86, 252);
+    transform: translateX(-5px);
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+  }
+  &__edit {
+    position: absolute;
+    z-index: 1;
+    top: 50px;
+    right: 0;
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: all 0.5s;
+  }
+  &:hover {
+    margin-bottom: 25px;
+  }
+  &:hover &__edit {
+    border: 1px solid rgb(180, 86, 252);
+    padding: 10px 10px;
+    height: 40px;
+  }
+}
+
+img {
+  cursor: pointer;
+  transition: all 0.5s;
+  margin-right: 10px;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:hover {
+    padding: 5px;
+    border: 1px solid rgb(180, 86, 252);
+  }
+}

@@ -101,11 +101,17 @@
     <div class="form__input">
       <label for="company">Company</label>
       <select name="company" id="company" formControlName="company">
-        <option value="select">--Select--</option>
+        <option
+          *ngFor="let company of companys | async"
+          [value]="company.name_company"
+        >
+          {{ company.name_company }}
+        </option>
+        <!-- <option value="select">--Select--</option>
         <option value="erker">erker</option>
         <option value="devpro">devpro</option>
         <option value="prodoctorov">prodoctorov</option>
-        <option value="rostelecom">rostelecom</option>
+        <option value="rostelecom">rostelecom</option> -->
       </select>
       <small
         class="form__error"

@@ -4,14 +4,49 @@
   <ng-container *ngFor="let company of company$ | async">
     <div
       class="company__block"
-      routerLink="/company-dashboard/{{ company.id }}"
       *ngIf="
         searchText === '' ||
         company.name_company.toLowerCase().includes(searchText)
       "
     >
-      <span>{{ company.name_company }}</span>
+      <app-company [company]="company"></app-company>
+
+      <!-- <span>{{ company.name_company }}</span>
       <span>{{ company.created | date }}</span>
+      <div class="company__edit">
+        <img src="/assets/img/send.png" alt="send" width="20" height="20" />
+        <img src="/assets/img/delete.png" alt="delete" width="20" height="20" />
+      </div> -->
     </div>
   </ng-container>
 </div>
+
+<!-- <img
+          *ngIf="editMode"
+          src="/assets/img/send.png"
+          alt="send"
+          width="20"
+          height="20"
+        />
+        <img
+          *ngIf="editMode"
+          src="/assets/img/delete.png"
+          alt="delete"
+          width="20"
+          height="20"
+        />
+        <img
+          *ngIf="editMode"
+          src="/assets/img/cancel.png"
+          alt="cancel"
+          width="20"
+          height="20"
+        />
+        <img
+          *ngIf="!editMode"
+          src="assets/img/edit.png"
+          alt="edit"
+          width="20"
+          height="20"
+          (click)="this.editMode = true"
+        /> -->

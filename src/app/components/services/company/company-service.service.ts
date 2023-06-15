@@ -31,4 +31,8 @@ export class CompanyServiceService {
         this.entities$.next(this.company);
       });
   }
+
+  public delete(id: number) {
+    return this.http.delete(`${BASE_URL}/${id}`).subscribe(() => this.get());
+  }
 }

@@ -1,0 +1,16 @@
+<div class="company">
+  <div class="company__block" routerLink="/company-dashboard/{{ company.id }}">
+    <span>{{ company.name_company }}</span>
+    <span>{{ company.created | date }}</span>
+  </div>
+  <div class="company__edit">
+    <img src="/assets/img/send.png" alt="send" width="20" height="20" />
+    <img
+      src="/assets/img/delete.png"
+      alt="delete"
+      width="20"
+      height="20"
+      (click)="delete(company.id)"
+    />
+  </div>
+</div>

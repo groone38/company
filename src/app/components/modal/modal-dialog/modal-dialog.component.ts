@@ -9,6 +9,8 @@ import {
 import { UsersService } from './../../services/users/users.service';
 import { CompanyServiceService } from './../../services/company/company-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { ICompony } from 'src/app/models/compony.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-modal-dialog',
@@ -23,10 +25,13 @@ export class ModalDialogComponent {
     private readonly formBuilder: FormBuilder,
     private readonly route: ActivatedRoute
   ) {}
+  public companys: Observable<ICompony[]>;
   public userForms!: FormGroup;
   public companyForms!: FormGroup;
   public toggle: boolean = true;
   ngOnInit(): void {
+    this.companyServiceService.get();
+    this.companys = this.companyServiceService.entities$;
     this.userForms = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(3)]],
