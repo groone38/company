@@ -6,14 +6,14 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ModalLoginComponent } from './components/modal/modal-login/modal-login.component';
 import { HeaderComponent } from './components/header/header.component';
-import { CompanyDashboardComponent } from './components/company-dashboard/company-dashboard.component';
+import { DepartamentDashboardComponent } from './components/departaments-dashboard/departament-dashboard.component';
 import { UsersCompanyComponent } from './components/users-company/users-company.component';
 import { UserComponent } from './components/users-company/user/user.component';
 import { SearchComponent } from './components/search/search.component';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { ModalDialogComponent } from './components/modal/modal-dialog/modal-dialog.component';
 import { ModelRegistrComponent } from './components/modal/modal-registr/model-registr.component';
-import { CompanyComponent } from './components/company-dashboard/company/company.component';
+import { DepartamentComponent } from './components/departaments-dashboard/departamet/departament.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +21,12 @@ import { CompanyComponent } from './components/company-dashboard/company/company
     ModalLoginComponent,
     ModelRegistrComponent,
     HeaderComponent,
-    CompanyDashboardComponent,
+    DepartamentDashboardComponent,
     UsersCompanyComponent,
     UserComponent,
     SearchComponent,
     ModalDialogComponent,
-    CompanyComponent,
+    DepartamentComponent,
   ],
   imports: [
     BrowserModule,

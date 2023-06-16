@@ -39,7 +39,7 @@ export class ModalLoginComponent implements OnInit {
         this.errorMessage = '';
         this.modalServiceService.token = res.token;
         localStorage.setItem('token', res.token);
-        this.router.navigate(['company-dashboard']);
+        this.router.navigate(['departament-dashboard']);
       },
       (error) => {
         this.loginForms.reset();

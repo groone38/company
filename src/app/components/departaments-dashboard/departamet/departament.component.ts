@@ -1,20 +1,20 @@
 import { Component, Input } from '@angular/core';
 import { ICompony } from 'src/app/models/compony.model';
-import { CompanyServiceService } from './../../services/company/company-service.service';
+import { CompanyServiceService } from '../../services/company/company-service.service';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { GeneralService } from './../../services/general.service';
+import { GeneralService } from '../../services/general.service';
 
 @Component({
-  selector: 'app-company',
-  templateUrl: './company.component.html',
-  styleUrls: ['./company.component.scss'],
+  selector: 'app-departament',
+  templateUrl: './departament.component.html',
+  styleUrls: ['./departament.component.scss'],
 })
-export class CompanyComponent {
+export class DepartamentComponent {
   constructor(
     private readonly companyServiceService: CompanyServiceService,
     private readonly formBuilder: FormBuilder,

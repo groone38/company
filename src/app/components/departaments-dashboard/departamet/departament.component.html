@@ -1,5 +1,8 @@
 <form class="company" [formGroup]="companyform">
-  <div class="company__block" routerLink="/company-dashboard/{{ company.id }}">
+  <div
+    class="company__block"
+    routerLink="/departament-dashboard/{{ company.id }}"
+  >
     <span>{{ company.name_company }}</span>
     <span>{{ company.created | date }}</span>
   </div>
