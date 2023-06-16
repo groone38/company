@@ -4,14 +4,26 @@
     <span>{{ company.created | date }}</span>
   </div>
   <div class="company__edit" *ngIf="generalService.admin">
-    <div *ngIf="editMode">
+    <div *ngIf="editMode" class="edit">
       <label for="name__company">Department</label>
       <input
         type="text"
         name="name__company"
         id="name__company"
         formControlName="name__company"
+        [value]="company.name_company"
       />
+      <small
+        class="error"
+        *ngIf="name__company.errors?.['required'] && (name__company.touched || name__company.dirty)"
+        >Last name is required</small
+      >
+      <small
+        class="error"
+        *ngIf="name__company.errors?.['minlength'] && (name__company.touched || name__company.dirty)"
+      >
+        Last name min length 2 simbols
+      </small>
     </div>
     <img
       src="/assets/img/send.png"

@@ -32,6 +32,7 @@ export class ModalDialogComponent {
   ngOnInit(): void {
     this.companyServiceService.get();
     this.companys = this.companyServiceService.entities$;
+    console.log(this.companys);
     this.userForms = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(3)]],

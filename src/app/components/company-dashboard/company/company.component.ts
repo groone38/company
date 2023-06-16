@@ -1,7 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { ICompony } from 'src/app/models/compony.model';
 import { CompanyServiceService } from './../../services/company/company-service.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { GeneralService } from './../../services/general.service';
 
 @Component({
@@ -22,7 +27,10 @@ export class CompanyComponent {
 
   ngOnInit(): void {
     this.companyform = this.formBuilder.group({
-      name__company: [this.company.name_company],
+      name__company: [
+        this.company.name_company,
+        [Validators.required, Validators.minLength(2)],
+      ],
     });
   }
 
@@ -33,5 +41,9 @@ export class CompanyComponent {
 
   public delete(id: number) {
     this.companyServiceService.delete(id);
+  }
+
+  public get name__company(): FormControl {
+    return this.companyform.get('name__company') as FormControl;
   }
 }

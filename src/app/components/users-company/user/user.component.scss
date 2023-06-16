@@ -6,6 +6,13 @@
   border: 1px solid rgb(180, 86, 252);
   border-radius: 20px;
 
+  &__input {
+    label {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+  }
+
   &__name {
     display: flex;
     align-items: center;
@@ -32,4 +39,8 @@
       }
     }
   }
+}
+
+.error {
+  color: red;
 }

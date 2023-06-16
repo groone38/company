@@ -4,50 +4,145 @@
       ><strong>Full name: </strong>{{ user.first_name }}
       {{ user.last_name }}</span
     >
-    <div *ngIf="editMode">
-      <label for="first_name">First Name</label>
+    <div *ngIf="editMode" class="user__input">
+      <label for="first_name">First Name:</label>
       <input
         type="text"
         name="first_name"
         id="first_name"
         formControlName="first_name"
+        [ngModel]="this.user.first_name"
       />
+      <small
+        class="error"
+        *ngIf="firstName.errors?.['required'] && (firstName.touched || firstName.dirty)"
+        >First name is required</small
+      >
+      <small
+        class="error"
+        *ngIf="firstName.errors?.['minlength'] && (firstName.touched || firstName.dirty)"
+      >
+        First name min length 2 simbols
+      </small>
+      <small
+        class="error"
+        *ngIf="firstName.errors?.['pattern'] && (firstName.touched || firstName.dirty)"
+      >
+        First name is not number
+      </small>
     </div>
     <p><strong>№:</strong> {{ index + 1 }}</p>
   </div>
-  <div *ngIf="editMode">
-    <label for="last_name">Last Name</label>
+  <div *ngIf="editMode" class="user__input">
+    <label for="last_name">Last Name:</label>
     <input
       type="text"
       name="last_name"
       id="last_name"
       formControlName="last_name"
+      [ngModel]="this.user?.last_name"
     />
+    <small
+      class="error"
+      *ngIf="lastName.errors?.['required'] && (lastName.touched || lastName.dirty)"
+      >Last name is required</small
+    >
+    <small
+      class="error"
+      *ngIf="lastName.errors?.['minlength'] && (lastName.touched || lastName.dirty)"
+    >
+      Last name min length 2 simbols
+    </small>
+    <small
+      class="error"
+      *ngIf="lastName.errors?.['pattern'] && (lastName.touched || lastName.dirty)"
+    >
+      Last name is not number
+    </small>
   </div>
   <div>
     <span *ngIf="!editMode"><strong>Email: </strong>{{ user?.email }}</span>
-    <div *ngIf="editMode">
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" formControlName="email" />
+    <div *ngIf="editMode" class="user__input">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        formControlName="email"
+        [ngModel]="this.user?.email"
+      />
+      <small
+        class="error"
+        *ngIf="email.errors?.['required'] && (email.touched || email.dirty)"
+        >Email is required</small
+      >
+      <small
+        class="error"
+        *ngIf="email.errors?.['email'] && (email.touched || email.dirty)"
+      >
+        Email is Invalid
+      </small>
     </div>
   </div>
   <div>
-    <span *ngIf="!editMode"><strong>Company: </strong>{{ user?.company }}</span>
-    <div *ngIf="editMode">
-      <label for="company">Company</label>
-      <input
-        type="text"
-        name="company"
-        id="company"
-        formControlName="company"
-      />
+    <span *ngIf="!editMode"
+      ><strong>Departament: </strong>{{ user?.company }}</span
+    >
+    <div *ngIf="editMode" class="user__input">
+      <label for="company">Departament:</label>
+      <select name="company" id="company" formControlName="company">
+        <option
+          *ngFor="let company of companys | async"
+          [value]="company.name_company"
+        >
+          <!-- {{ company.name_company }} -->
+          123
+        </option>
+        <option value="Human Resources">Human Resources</option>
+        <option value="Developments">Developments</option>
+        <option value="Jurisprudence">Jurisprudence</option>
+        <option value="Information Security">Information Security</option>
+        <!-- <option value="select">--Select--</option>
+        <option value="devpro">devpro</option>
+        <option value="prodoctorov">prodoctorov</option>
+        <option value="rostelecom">rostelecom</option> -->
+      </select>
     </div>
   </div>
   <div class="user__footer">
     <span *ngIf="!editMode"><strong>Tel: </strong>{{ user?.tel }}</span>
-    <div *ngIf="editMode">
-      <label for="tel">Tel</label>
-      <input type="tel" name="tel" id="tel" formControlName="tel" />
+    <div *ngIf="editMode" class="user__input">
+      <label for="tel">Tel:</label>
+      <input
+        type="tel"
+        name="tel"
+        id="tel"
+        formControlName="tel"
+        [ngModel]="this.user?.tel"
+      />
+      <small
+        class="error"
+        *ngIf="tel.errors?.['required'] && (tel.touched || tel.dirty)"
+        >Tel is required</small
+      >
+      <small
+        class="error"
+        *ngIf="tel.errors?.['minlength'] && (tel.touched || tel.dirty)"
+      >
+        Tel min length 10 simbols
+      </small>
+      <small
+        class="error"
+        *ngIf="tel.errors?.['maxlength'] && (tel.touched || tel.dirty)"
+      >
+        Tel max length 10 simbols
+      </small>
+      <small
+        class="error"
+        *ngIf="tel.errors?.['pattern'] && (tel.touched || tel.dirty)"
+      >
+        Tel is not letters
+      </small>
     </div>
     <div class="user__btn" *ngIf="generalService.admin">
       <img
@@ -63,7 +158,7 @@
         alt="cancel"
         width="20"
         height="20"
-        (click)="this.editMode = false"
+        (click)="onEdit()"
         *ngIf="editMode"
       />
       <img
