@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalServiceService } from 'src/app/components/services/modal/modal-service.service';
-import { CompanyServiceService } from './../../services/company/company-service.service';
 
 @Component({
   selector: 'app-model-registr',
@@ -20,7 +19,6 @@ export class ModelRegistrComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private readonly modalServiceService: ModalServiceService,
-    private readonly companyServiceService: CompanyServiceService,
     private router: Router
   ) {}
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyServiceService } from '../services/company/company-service.service';
-import { ICompony } from 'src/app/models/compony.model';
+import { DepartamentService } from '../services/company/departament-service.service';
+import { IDepartament } from 'src/app/models/departament.model';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,18 +9,18 @@ import { Observable } from 'rxjs';
   styleUrls: ['./departament-dashboard.component.scss'],
 })
 export class DepartamentDashboardComponent implements OnInit {
-  constructor(private readonly companyServiceService: CompanyServiceService) {}
+  constructor(private readonly departamentService: DepartamentService) {}
 
   public searchText: string = '';
   public editMode: boolean = false;
-  public company$: Observable<ICompony[]>;
+  public departaments$: Observable<IDepartament[]>;
 
   onSearchTextEntered(searchValue: string) {
     this.searchText = searchValue;
   }
 
   ngOnInit(): void {
-    this.companyServiceService.get();
-    this.company$ = this.companyServiceService.entities$;
+    this.departamentService.get();
+    this.departaments$ = this.departamentService.entities$;
   }
 }

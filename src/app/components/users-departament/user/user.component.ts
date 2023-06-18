@@ -10,8 +10,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { CompanyServiceService } from './../../services/company/company-service.service';
-import { ICompony } from 'src/app/models/compony.model';
+import { IDepartament } from 'src/app/models/departament.model';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -23,13 +22,12 @@ export class UserComponent implements OnInit {
   constructor(
     public readonly generalService: GeneralService,
     private readonly usersService: UsersService,
-    public readonly companyServiceService: CompanyServiceService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute
   ) {}
   @Input() user?: User;
   @Input() index: number = 0;
-  @Input() companys: Observable<ICompony[]>;
+  @Input() companys: Observable<IDepartament[]>;
   public userform!: FormGroup;
   public editMode: boolean = false;
 

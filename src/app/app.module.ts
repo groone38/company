@@ -7,8 +7,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ModalLoginComponent } from './components/modal/modal-login/modal-login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DepartamentDashboardComponent } from './components/departaments-dashboard/departament-dashboard.component';
-import { UsersCompanyComponent } from './components/users-company/users-company.component';
-import { UserComponent } from './components/users-company/user/user.component';
+import { UsersDepartamentComponent } from './components/users-departament/users-departament.component';
+import { UserComponent } from './components/users-departament/user/user.component';
 import { SearchComponent } from './components/search/search.component';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { ModalDialogComponent } from './components/modal/modal-dialog/modal-dialog.component';
@@ -22,7 +22,7 @@ import { DepartamentComponent } from './components/departaments-dashboard/depart
     ModelRegistrComponent,
     HeaderComponent,
     DepartamentDashboardComponent,
-    UsersCompanyComponent,
+    UsersDepartamentComponent,
     UserComponent,
     SearchComponent,
     ModalDialogComponent,

@@ -1,52 +1,15 @@
 <app-header></app-header>
 <app-search (searchTextChange)="onSearchTextEntered($event)"></app-search>
 <div class="company">
-  <ng-container *ngFor="let company of company$ | async">
+  <ng-container *ngFor="let departament of departaments$ | async">
     <div
       class="company__block"
       *ngIf="
         searchText === '' ||
-        company.name_company.toLowerCase().includes(searchText)
+        departament.name_company.toLowerCase().includes(searchText)
       "
     >
-      <app-departament [company]="company"></app-departament>
-
-      <!-- <span>{{ company.name_company }}</span>
-      <span>{{ company.created | date }}</span>
-      <div class="company__edit">
-        <img src="/assets/img/send.png" alt="send" width="20" height="20" />
-        <img src="/assets/img/delete.png" alt="delete" width="20" height="20" />
-      </div> -->
+      <app-departament [departament]="departament"></app-departament>
     </div>
   </ng-container>
 </div>
-
-<!-- <img
-          *ngIf="editMode"
-          src="/assets/img/send.png"
-          alt="send"
-          width="20"
-          height="20"
-        />
-        <img
-          *ngIf="editMode"
-          src="/assets/img/delete.png"
-          alt="delete"
-          width="20"
-          height="20"
-        />
-        <img
-          *ngIf="editMode"
-          src="/assets/img/cancel.png"
-          alt="cancel"
-          width="20"
-          height="20"
-        />
-        <img
-          *ngIf="!editMode"
-          src="assets/img/edit.png"
-          alt="edit"
-          width="20"
-          height="20"
-          (click)="this.editMode = true"
-        /> -->

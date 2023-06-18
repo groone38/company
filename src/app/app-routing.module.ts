@@ -4,7 +4,7 @@ import { ModalLoginComponent } from './components/modal/modal-login/modal-login.
 import { ModelRegistrComponent } from './components/modal/modal-registr/model-registr.component';
 import { DepartamentDashboardComponent } from './components/departaments-dashboard/departament-dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
-import { UsersCompanyComponent } from './components/users-company/users-company.component';
+import { UsersDepartamentComponent } from './components/users-departament/users-departament.component';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: '', component: DepartamentDashboardComponent },
-      { path: ':id', component: UsersCompanyComponent },
+      { path: ':id', component: UsersDepartamentComponent },
     ],
   },
   { path: 'login', component: ModalLoginComponent },

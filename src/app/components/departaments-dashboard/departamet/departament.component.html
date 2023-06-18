@@ -1,12 +1,12 @@
-<form class="company" [formGroup]="companyform">
+<form class="departament" [formGroup]="departamentform">
   <div
-    class="company__block"
-    routerLink="/departament-dashboard/{{ company.id }}"
+    class="departament__block"
+    routerLink="/departament-dashboard/{{ departament.id }}"
   >
-    <span>{{ company.name_company }}</span>
-    <span>{{ company.created | date }}</span>
+    <span>{{ departament.name_company }}</span>
+    <span>{{ departament.created | date }}</span>
   </div>
-  <div class="company__edit" *ngIf="generalService.admin">
+  <div class="departament__edit" *ngIf="generalService.admin">
     <div *ngIf="editMode" class="edit">
       <label for="name__company">Department</label>
       <input
@@ -14,7 +14,7 @@
         name="name__company"
         id="name__company"
         formControlName="name__company"
-        [value]="company.name_company"
+        [value]="departament.name_company"
       />
       <small
         class="error"
@@ -57,7 +57,7 @@
       alt="delete"
       width="20"
       height="20"
-      (click)="delete(company.id)"
+      (click)="delete(departament.id)"
     />
   </div>
 </form>

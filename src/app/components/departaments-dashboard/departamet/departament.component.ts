@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { ICompony } from 'src/app/models/compony.model';
-import { CompanyServiceService } from '../../services/company/company-service.service';
+import { IDepartament } from 'src/app/models/departament.model';
+import { DepartamentService } from '../../services/company/departament-service.service';
 import {
   FormBuilder,
   FormControl,
@@ -16,19 +16,19 @@ import { GeneralService } from '../../services/general.service';
 })
 export class DepartamentComponent {
   constructor(
-    private readonly companyServiceService: CompanyServiceService,
+    private readonly departamentService: DepartamentService,
     private readonly formBuilder: FormBuilder,
     public readonly generalService: GeneralService
   ) {}
 
-  @Input() company: ICompony;
-  public companyform!: FormGroup;
+  @Input() departament: IDepartament;
+  public departamentform!: FormGroup;
   public editMode: boolean = false;
 
   ngOnInit(): void {
-    this.companyform = this.formBuilder.group({
+    this.departamentform = this.formBuilder.group({
       name__company: [
-        this.company.name_company,
+        this.departament.name_company,
         [Validators.required, Validators.minLength(2)],
       ],
     });
@@ -36,14 +36,17 @@ export class DepartamentComponent {
 
   public sendEdit() {
     this.editMode = false;
-    this.companyServiceService.put(this.companyform.value, this.company.id);
+    this.departamentService.put(
+      this.departamentform.value,
+      this.departament.id
+    );
   }
 
   public delete(id: number) {
-    this.companyServiceService.delete(id);
+    this.departamentService.delete(id);
   }
 
   public get name__company(): FormControl {
-    return this.companyform.get('name__company') as FormControl;
+    return this.departamentform.get('name__company') as FormControl;
   }
 }

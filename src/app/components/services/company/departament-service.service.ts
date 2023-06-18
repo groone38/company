@@ -1,32 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { ICompanyRequest, ICompony } from 'src/app/models/compony.model';
+import {
+  IDepartamentRequest,
+  IDepartament,
+} from 'src/app/models/departament.model';
 
 const BASE_URL: string = 'http://localhost:5000/compony';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CompanyServiceService {
+export class DepartamentService {
   constructor(private readonly http: HttpClient) {}
 
-  private company: ICompony[] = [];
-  public entities$: Subject<ICompony[]> = new Subject();
+  private company: IDepartament[] = [];
+  public entities$: Subject<IDepartament[]> = new Subject();
 
   public get() {
     this.http
-      .get<ICompony[]>(`${BASE_URL}`)
-      .subscribe((company: ICompony[]) => {
+      .get<IDepartament[]>(`${BASE_URL}`)
+      .subscribe((company: IDepartament[]) => {
         this.company = company;
         this.entities$.next(this.company);
       });
   }
 
-  public create(company: ICompony) {
+  public create(company: IDepartament) {
     this.http
-      .post<ICompanyRequest>(`${BASE_URL}`, company)
-      .subscribe((company: ICompanyRequest) => {
+      .post<IDepartamentRequest>(`${BASE_URL}`, company)
+      .subscribe((company: IDepartamentRequest) => {
         this.company = company.data;
         this.entities$.next(this.company);
       });

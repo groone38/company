@@ -7,9 +7,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { UsersService } from './../../services/users/users.service';
-import { CompanyServiceService } from './../../services/company/company-service.service';
+import { DepartamentService } from '../../services/company/departament-service.service';
 import { ActivatedRoute } from '@angular/router';
-import { ICompony } from 'src/app/models/compony.model';
+import { IDepartament } from 'src/app/models/departament.model';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -21,17 +21,17 @@ export class ModalDialogComponent {
   constructor(
     public readonly generalService: GeneralService,
     private readonly usersService: UsersService,
-    private readonly companyServiceService: CompanyServiceService,
+    private readonly departamentService: DepartamentService,
     private readonly formBuilder: FormBuilder,
     private readonly route: ActivatedRoute
   ) {}
-  public companys: Observable<ICompony[]>;
+  public companys: Observable<IDepartament[]>;
   public userForms!: FormGroup;
   public companyForms!: FormGroup;
   public toggle: boolean = true;
   ngOnInit(): void {
-    this.companyServiceService.get();
-    this.companys = this.companyServiceService.entities$;
+    this.departamentService.get();
+    this.companys = this.departamentService.entities$;
     console.log(this.companys);
     this.userForms = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -77,7 +77,7 @@ export class ModalDialogComponent {
   }
 
   public createCompany() {
-    this.companyServiceService.create(this.companyForms.value);
+    this.departamentService.create(this.companyForms.value);
     this.companyForms.reset();
     this.generalService.showDialog = false;
   }
